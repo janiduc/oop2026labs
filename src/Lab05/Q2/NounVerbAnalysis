@@ -1,0 +1,93 @@
+a)
+Customer
+VTV
+Cable TV Company
+Customer Details
+Package
+Channels
+Customer Number
+Customer Table
+Subscription
+Subscription Table
+Channel Details
+Channel Details Table
+Bill
+Website
+Tasks
+Weekly TV Schedule
+Email
+Credit Card
+Credit Card Details
+Payment
+Payments Table
+TV Schedule
+Amount
+Registration
+
+b)
+Synonyms / duplicate concepts → remove duplicates.
+Attributes rather than objects → remove.
+Implementation details (tables, database terms) → remove.
+Irrelevant to system behavior → remove.
+Roles or external systems rather than objects → remove.
+
+Final Set of Potential Classes
+1)Customer
+2)Subscription
+3)Channel
+4)Package
+5)Bill
+6)Payment
+7)TVSchedule
+
+c)
+CRC Cards for 5 Classes
+
+CRC = Class – Responsibilities – Collaborators
+
+1. CRC Card – Customer
+| Class            | Customer                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| Responsibilities | Register with system, Manage subscription, Request weekly schedule, View bill, Make payment |
+| Collaborators    | Subscription, Bill, Payment                                                                 |
+
+2. CRC Card – Subscription
+| Class            | Subscription                                                                     |
+| ---------------- | -------------------------------------------------------------------------------- |
+| Responsibilities | Store subscribed channels, Add channels, Remove channels, Store schedule request |
+| Collaborators    | Customer, Channel                                                                |
+
+3. CRC Card – Channel
+| Class            | Channel                                        |
+| ---------------- | ---------------------------------------------- |
+| Responsibilities | Maintain channel details, Provide TV schedules |
+| Collaborators    | Subscription, TVSchedule                       |
+
+4. CRC Card – Bill
+| Class            | Bill                                                                         |
+| ---------------- | ---------------------------------------------------------------------------- |
+| Responsibilities | Generate monthly bill, Calculate subscription charges, Send bill to customer |
+| Collaborators    | Customer, Subscription, Payment                                              |
+
+5. CRC Card – Payment
+| Class            | Payment                                            |
+| ---------------- | -------------------------------------------------- |
+| Responsibilities | Process credit card payment, Store payment details |
+| Collaborators    | Customer, Bill                                     |
+
+Final Class Structure (Conceptual)
+Customer
+   │
+   │ subscribes
+   ▼
+Subscription ─── Channel
+      │
+      │ generates
+      ▼
+     Bill
+      │
+      │ paid through
+      ▼
+    Payment
+
+Channel ─── TVSchedule
